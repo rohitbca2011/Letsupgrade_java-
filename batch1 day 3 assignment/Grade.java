@@ -1,67 +1,39 @@
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.Period;
 
-public class EmployeeDetail {
-    private static Scanner sc;
-    public static void main(final String[] args) {
-
-
-        String name;
-         int date, month, year,age;
-        double monthlySalary, anualSalary;
-		 final double tax;
-         sc = new Scanner(System.in);
-         
-        System.out.println("**********Employee details:-************");
-         System.out.println("Enter empolyee name");
-         name= sc.nextLine();
-
-        System.out.println("Enter empolyee date of birth");
-         date= sc.nextInt();
-
-         System.out.println("Enter empolyee month of birth");
-         month= sc.nextInt();
-
-         System.out.println("Enter empolyee year of birth");
-         year= sc.nextInt();
-
-
-        System.out.println("Enter empolyee monthly salary");
-        monthlySalary = sc.nextInt();
-
-        anualSalary= (monthlySalary*12);
-
-        LocalDate today =LocalDate.now();
-         LocalDate birthDate = LocalDate.of(year, month, date);
-         age=Period.between(birthDate, today).getYears();
-
-
-
-        System.out.println("Name Of Employee : " +name);
-        System.out.println("Age of Employee: " +age);
-        System.out.println("Anual salary Of Employee : " +anualSalary);
+public class Grade {
+	private static Scanner sc;
+	public static void main(String[] args) 
+	{
+        int i;
+        int marks[] = new int[5]; 
+	    float total = 0, Percentage;
+        sc = new Scanner(System.in);
         
-        if (anualSalary>=50000){
-            tax= anualSalary*0.2;
-            System.out.println("tax amount: "+tax);
-        } 
-        else  if (anualSalary>=40000){
-            tax= anualSalary*0.15;
-            System.out.println("tax amount: "+tax);
-        } 
-        else  if (anualSalary>=300000){
-            tax= anualSalary*0.1;
-            System.out.println("tax amount: "+tax);
-        } 
-        else  if (anualSalary>=200000){
-            tax= anualSalary*0.05;
-            System.out.println("tax amount: "+tax);
-        } 
+        for ( i = 0; i <5; i++) {
+          System.out.println("Enter marks of subject  "+ (i+1) );
+          marks[i] =  sc.nextInt();
+          total = total+marks[i];
+               
+        }
+		
+	    Percentage = (total / 500) * 100;
+	    
+        System.out.println("Percentage =  " + Percentage);
+        if(Percentage>=90){
+            System.out.println("GRADE A");
+        }
+        else if(Percentage<90 && Percentage>=70){
+            System.out.println("GRADE B");
+        }
+        else if(Percentage<70 && Percentage>=50){
+            System.out.println("GRADE C");
+        }
+        else if(Percentage<50 && Percentage>=33){
+            System.out.println("GRADE D");
+        }
         else{
-            System.out.println("no taxes");
+            System.out.println("fail");
         }
 
-    }
-    
+     }
 }
